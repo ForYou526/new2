@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love 💖</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Courier New', monospace;
+    background:linear-gradient(to bottom,#ffb6d5,#ffcce6);
+    overflow:hidden;
+    text-align:center;
+    color:#ff1493;
+}
+
+h1{
+    margin-top:40px;
+    font-size:28px;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    background:#ff69b4;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.envelope{
+    width:250px;
+    height:150px;
+    background:#ff8dc7;
+    margin:100px auto;
+    position:relative;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.flap{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ff69b4;
+    top:0;
+    left:0;
+    clip-path:polygon(0 0,100% 0,50% 60%);
+    transition:0.6s;
+}
+
+.paper{
+    width:300px;
+    background:white;
+    padding:20px;
+    margin:0 auto;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    transition:0.7s;
+}
+
+.paper p{
+    font-size:16px;
+}
+
+.gallery{
+    margin-top:20px;
+}
+
+.gallery img{
+    width:100px;
+    height:130px;
+    object-fit:cover;
+    border-radius:10px;
+    margin:5px;
+    box-shadow:0 0 10px pink;
+}
+
+.footer{
+    position:fixed;
+    bottom:10px;
+    width:100%;
+    font-size:12px;
+    color:#c71585;
+}
+
+.cinematic{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    color:white;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    opacity:0;
+    transition:2s;
+    z-index:99;
+}
+
+.heart{
+    position:absolute;
+    color:pink;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-100px);}
+    100%{transform:translateY(100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>💗 For Someone Very Special 💗</h1>
+
+<div class="envelope" onclick="openLetter()">
+    <div class="flap" id="flap"></div>
+</div>
+
+<div class="paper" id="letter">
+    <h2>I'm Sorry 💌</h2>
+    <p>
+    I know I made mistakes.<br><br>
+    I never meant to hurt you.<br>
+    You mean everything to me.<br><br>
+    Please forgive me... 💖
+    </p>
+
+    <div class="gallery">
+        <!-- GANTI FOTO DI SINI -->
+        <img src="foto1.jpg">
+        <img src="foto2.jpg">
+        <img src="foto3.jpg">
+    </div>
+
+    <br>
+    <button onclick="cinematic()">Finish 💗</button>
+</div>
+
+<div class="cinematic" id="cinematicText">
+    The program is finished,<br>
+    but my love for you never ends. 💞
+</div>
+
+<div class="footer">
+    Powered by Raihan Nadir Widodo 💕
+</div>
+
+<audio id="beep" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+<script>
+function openLetter(){
+    document.getElementById("flap").style.transform="rotateX(180deg)";
+    document.getElementById("letter").style.transform="translate(-50%,-50%) scale(1)";
+    document.getElementById("beep").play();
+}
+
+function cinematic(){
+    document.getElementById("cinematicText").style.opacity="1";
+}
+
+function createHearts(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+15+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove()},5000);
+}
+setInterval(createHearts,500);
+</script>
+
+</body>
+</html>
